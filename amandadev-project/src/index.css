@@ -1,0 +1,19 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body global */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #4682B4 0%, rgba(176, 196, 222, 0.8) 100%);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 20px;
+}

@@ -1,0 +1,88 @@
+/* Container principal – aumentado para caber inputs horizontais */
+.container {
+  max-width: 950px !important;  /* Aumentado: 950px para mais folga (cabe inputs horizontais + lista sem aperto) */
+  width: 95% !important;  /* Flexível: usa 95% da tela se <950px */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 35px !important;  /* Padding maior para respiro interno */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin: 0 auto;
+}
+
+
+/* Título – ajustado para largura total */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4682B4;
+  font-weight: 600;
+  font-size: 24px;
+  width: 100%;
+}
+
+/* Formulário de adição – forçado horizontal, sem wrap em desktop */
+.user-form {
+  display: flex;
+  gap: 10px;  /* Espaçamento entre itens */
+  margin-bottom: 20px;
+  flex-wrap: nowrap;  /* Nova: Força todos em uma linha (sem quebra) – inputs lado a lado */
+  justify-content: space-between;  /* Distribui espaço uniformemente */
+  align-items: end;  /* Alinha bottoms para alturas iguais */
+  width: 100%;  /* Usa toda largura do container */
+}
+
+input[type="text"], input[type="number"], input[type="email"] {
+  flex: 1;  /* Nova: Cresce igualmente (cada ~25% da largura total, ~180px em 800px container) */
+  min-width: 150px;  /* Mínimo: Evita squeeze em "Idade" (números curtos) */
+  max-width: 250px;  /* Máximo: Previne esticamento excessivo em emails longos */
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;  /* Inclui padding/border na flex calculation */
+}
+
+input:focus {
+  outline: none;
+  border-color: #4682B4;
+  box-shadow: 0 0 5px rgba(70, 130, 180, 0.3);
+}
+
+/* Botão no form – tamanho fixo para não interferir no flex */
+.user-form button {
+  flex: 0 0 120px;  /* Nova: Largura fixa ~120px, não cresce/shrink – cabe ao lado dos inputs */
+  white-space: nowrap;  /* Texto "Register" não quebra */
+  align-self: end;  /* Alinha com o bottom dos inputs */
+}
+
+/* Responsividade: Quebra para vertical em mobile (prioridade para touch) */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;  /* Quase full-width em mobile */
+    padding: 20px;
+  }
+
+  .user-form {
+    flex-wrap: wrap;  /* Nova: Permite quebra em mobile se necessário, mas prioriza column abaixo */
+    flex-direction: column;  /* Empilha inputs verticalmente para caber em telas pequenas */
+    gap: 15px;  /* Mais gap vertical para legibilidade */
+  }
+
+  input[type="text"], input[type="number"], input[type="email"] {
+    flex: 1 1 100%;  /* Full-width em column */
+    max-width: none;
+    min-width: none;
+  }
+
+  .user-form button {
+    flex: 0 0 auto;
+    width: 100%;  /* Botão full-width em mobile para fácil toque */
+    align-self: stretch;
+  }
+}
