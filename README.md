@@ -1,4 +1,4 @@
-# 🚀 Back-End + Front-End API Integration with React
+# 🚀 react-api-integration
 
 A full-stack project focused on communication between a backend API and a React frontend application.
 
